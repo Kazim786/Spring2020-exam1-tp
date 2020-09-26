@@ -1,0 +1,323 @@
+
+<!DOCTYPE HTML>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<STYLE type="text/css">
+body,td,textarea {font-size:11px;padding:4px;font-family:Comic Sans MS, Arial;}
+a:link {color: blue;}
+a:visited {color: blue;}
+a:hover {color: blue;}
+a:active {color: red;}
+
+td.ccell {padding:0px;margin:0px;font-family:Comic Sans MS,Helvetica;font-size:12px;}
+
+input[type="text"].bigger    {margin:2px;width:68px;font-family:Comic Sans MS,Helvetica;font-size:12px;}
+input[type="text"].smaller   {margin:2px;width:15px;font-family:Comic Sans MS,Helvetica;font-size:12px;}
+
+</STYLE>
+<SCRIPT language="javascript">
+
+
+function p1()
+{
+
+  //   usb = 0;
+  //   avgAge = 0;
+  //   networth = 0;
+  //  validAgeCount = 0;
+
+  //   t1 = document.f1.ta1.value
+  //   t2 = t1.split(";")
+  //   console.log(t2)
+
+  //  os = "<table border = '1'>";
+
+
+  // for(i=0; i<t2.length;i++) //This creates rows after each iteration with data within those rows
+  // {
+
+  //   os += "<tr>";
+  //   t3 = t2[i].split(","); //This makes each string (1, Bill Gates, Microsoft) into a subarray within the bigger array
+  //   for(j=0; j<t3.length; j++){
+  //     os += "<td>" + t3[j] + "</td>" //This puts each part of the sub array's in the table
+  //                                   // 1, Bill Gates, Microsoft etc.
+  //   }
+  //   if(t3[3] != "n/a"){
+  //     avgAge += Number(t3[3]);
+  //     validAgeCount++
+
+  //   }
+
+  //   networth += Number(t3[4])/100
+
+  //   if(t3[2] === "United States"){
+  //     usb++;
+  //   }
+  // os+= "</tr>";
+
+
+
+  // }
+
+  // os += "</table><br> Average age = " + (avgAge/validAgeCount).toString() + "<br> The Average Networth is = " + networth.toString() + "<br> Number of US Billionaires is = " + usb.toString() + "<br>"
+  // p1_out.innerHTML = os;
+  
+
+  //My code
+
+  t1 = document.f1.ta1.value;
+  t2 = t1.split(';')
+console.log(t2)
+  averageAge = 0;
+  validAges = 0;
+  usb = 0;
+  networth = 0;
+
+  os = "<table border= '1'>"
+
+  for(i=0; i < t2.length; i++){
+
+    os+= "<tr>"
+
+    t3 = t2[i].split(",");
+    for(j=0; j<t3.length; j++){
+
+      if(t3[3] != "n/a")
+      {
+        averageAge+=Number(t3[3])
+        validAges++
+      }
+
+      if(t3[2] === "United States"){
+        usb++;
+
+      }
+
+      networth += Number(t3[4]);
+
+      os += "</tr>"
+    }
+
+  }
+
+  os += "</table> <br> Average age is " + (averageAge/validAges).toString() + "<br> Net worth is = " +  (networth/100).toString() + "<br> Number of US Billionaires is " + usb.toString()
+
+p1_out.innerHTML = os
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function p2()
+{
+  course = 0;
+  gpa = 0;
+  var gc = [0, 0, 0, 0, 0];
+  var letters = ['A', 'B', 'C', 'D', 'F'];
+  var points = [4, 3, 2, 1, 0];
+  for(i=1; i < 26; i=i+2){
+    if(document.f2.elements[i].value != "")
+    {
+      course++;
+      for(j=0;j<letters.length;j++)
+      {
+        if(document.f2.elements[i].value === letters[j])
+        {
+          gc[j]++;
+          gpa += points[j];
+        }
+      }
+
+    }
+
+
+  }
+
+
+
+//gpa
+s1.innerHTML = (gpa/course).toFixed(2)
+//number of hours
+s2.innerHTML = (course * 3).toString()
+
+os = " "
+
+for(i=0; i < letters.length; i++)
+{
+  os += "<br> Number of " + letters[i] + "s: " + gc[i]
+}
+s3.innerHTML = os;
+
+}
+
+
+</SCRIPT>
+</HEAD> 
+<BODY><b>
+<center><span style="font-size:24px;color:red;text-align:center;">MIDTERM MIS 3371 SPRING 2020 PARKS</span></center>
+<p>
+<TABLE width="98%" border="1" style="border-color:black;" cellspacing="0">
+  <TBODY>
+  <TR>
+    <TD valign="top">
+      <FORM name="f1" 
+style="margin: 0px; padding: 0px;"><TEXTAREA name="ta1" style="margin: 0px;" rows="20" cols="50">1,Bill Gates,United States,59,79.20,Microsoft; 2,Carlos Slim Helu,Mexico,75,77.10,Telecom; 3,Warren Buffett,United States,84,72.70,Berkshire Hathaway; 4,Amancio Ortega,Spain,78,64.50,Zara; 5,Larry Ellison,United States,70,54.30,Oracle; 6,Charles Koch,United States,79,42.90,Diversified; 6,David Koch,United States,74,42.90,Diversified; 8,Christy Walton,United States,60,41.70,Wal-Mart; 9,Jim Walton,United States,67,40.60,Wal-Mart; 10,Liliane Bettencourt,France,92,40.10,L'Oreal; 11,Alice Walton,United States,65,39.40,Wal-Mart; 12,S. Robson Walton,United States,71,39.10,Wal-Mart; 13,Bernard Arnault,France,66,37.20,LVMH; 14,Michael Bloomberg,United States,73,35.50,Bloomberg LP; 15,Jeff Bezos,United States,51,34.80,Amazon.com; 16,Mark Zuckerberg,United States,30,33.40,Facebook; 17,Li Ka-shing,Hong Kong,86,33.30,Diversified; 18,Sheldon Adelson,United States,81,31.40,Casinos; 19,Larry Page,United States,41,29.70,Google; 20,Sergey Brin,United States,41,29.20,Google; 21,Georg Schaeffler,Germany,50,26.90,Ball bearings; 22,Forrest Mars, United States,83,26.60,Candy; 22,Jacqueline Mars,United States,75,26.60,Candy; 22,John Mars,United States,78,26.60,Candy; 25,David Thomson,Canada,57,25.50,Media; 26,Jorge Paulo Lemann,Brazil,75,25.00,Beer; 27,Lee Shau Kee,Hong Kong,87,24.80,Real estate; 28,Stefan Persson,Sweden,67,24.50,H&M; 29,George Soros,United States,84,24.20,Hedge funds; 29,Wang Jianlin,China,60,24.20,Real Estate; 31,Carl Icahn,United States,79,23.50,Investments; 32,Maria Franca Fissolo,Italy,97,23.40,Nutella chocolates; 33,Jack Ma,China,50,22.70,E-commerce; 34,Prince Alwaleed Bin Talal Alsaud,Saudi Arabia,59,22.60,Investments; 35,Steve Ballmer,United States,58,21.50,Microsoft; 35,Phil Knight,United States,77,21.50,Nike; 37,Beate Heister & Karl Albrecht Jr.,Germany,n/a,21.30,Supermarkets; 38,Li Hejun,China,47,21.10,Solar power equipment; 39,Mukesh Ambani,India,57,21.00,Petrochemicals oil & gas; 40,Leonardo Del Vecchio,Italy,79,20.40,Eyeglasses; 41,Len Blavatnik,United States,57,20.20,Diversified; 41,Tadashi Yanai,Japan,66,20.20,Retail; 43,Charles Ergen,United States,62,20.10,Dish Network; 44,Dilip Shanghvi,India,59,20.00,Pharmaceuticals; 45,Laurene Powell Jobs,United States,51,19.50,Apple Disney; 46,Dieter Schwarz,Germany,75,19.40,Retail; 47,Michael Dell,United States,50,19.20,Dell; 48,Azim Premji,India,69,19.10,Software; 49,Theo Albrecht,Germany,64,19.00,Aldi Trader Joe's; 50,Michael Otto,Germany,71,18.10,Retail real estate; 51,Paul Allen,United States,62,17.50,Microsoft investments; 52,Joseph Safra,Brazil,76,17.30,Banking; 53,Anne Cox Chambers,United States,95,17.00,Media; 54,Susanne Klatten,Germany,52,16.80,BMW  pharmaceuticals; 55,Pallonji Mistry,Ireland,85,16.30,Construction; 56,Ma Huateng,China,43,16.10,Internet media; 57,Patrick Drahi,France,51,16.00,Telecom; 58,Thomas & Raymond Kwok,Hong Kong,n/a,15.90,Real estate; 59,Stefan Quandt,Germany,48,15.60,BMW; 60,Ray Dalio,United States,65,15.40,Hedge funds; 60,Vladimir Potanin,Russia,54,15.40,Metals; 62,Serge Dassault,France,89,15.30,Aviation; 62,Robin Li,China,46,15.30,Internet search; 64,Donald Bren,United States,82,15.20,Real estate; 65,Francois Pinault,France,78,14.90,Retail; 66,Shiv Nadar,India,69,14.80,Information technology; 67,Aliko Dangote,Nigeria,57,14.70,Cement sugar flour; 68,Mikhail Fridman,Russia,50,14.60,Oil banking telecom; 69,Hinduja brothers,United Kingdom,n/a,14.50,Diversified; 69,Ronald Perelman,United States,72,14.50,Leveraged buyouts; 71,Cheng Yu-tung,Hong Kong,89,14.40,Diversified; 71,Alisher Usmanov,Russia,61,14.40,Steel mining telecom investments; 73,Henry Sy,Philippines,90,14.20,Diversified; 73,Viktor Vekselberg,Russia,57,14.20,Metals energy; 75,Masayoshi Son,Japan,57,14.10,Internet telecom; 76,James Simons,United States,76,14.00,Hedge funds; 77,German Larrea Mota Velasco,Mexico,61,13.90,Mining; 77,Rupert Murdoch,United States,83,13.90,Media; 77,Johanna Quandt,Germany,88,13.90,BMW; 80,David & Simon Reuben,United Kingdom,72,13.70,Investments real estate; 81,Dhanin Chearavanont,Thailand,75,13.60,Food; 82,Iris Fontbona,Chile,72,13.50,Mining; 82,Lui Che Woo,Hong Kong,85,13.50,Casinos; 82,Lakshmi Mittal,India,64,13.50,Steel; 85,Abigail Johnson,United States,53,13.40,Money management; 85,Luis Carlos Sarmiento,Colombia,82,13.40,Banking; 87,Lei Jun,China,45,13.20,Smartphones; 87,Charoen Sirivadhanabhakdi,Thailand,70,13.20,Beverages; 89,Alexey Mordashov,Russia,49,13.00,Steel investments; 89,Marcel Herrmann Telles,Brazil,65,13.00,Beer; 91,Gerald Cavendish Grosvenor,United Kingdom,63,12.60,Real estate; 92,Hans Rausing,Sweden,88,12.50,Packaging; 92,Jack Taylor,United States,92,12.50,Enterprise Rent-A-Car; 94,Charles Butt,United States,77,12.30,Supermarkets; 94,Gina Rinehart,Australia,61,12.30,Mining; 96,Vagit Alekperov,Russia,64,12.20,Lukoil; 96,Harold Hamm,United States,69,12.20,Oil & gas; 96,Patrick Soon-Shiong,United States,63,12.20,Pharmaceuticals; 99,Stefano Pessina,Italy,73,12.10,Drugstores; 100,Richard Kinder,United States,70,12.00,Pipelines; 100,Elon Musk,United States,43,12.00,Tesla Motors; 100,Stephen Schwarzman,United States,68,12.00,Investments</TEXTAREA>
+<CENTER><INPUT onclick="p1()"  type="button" style="margin:2px;" value="Execute p1"></CENTER></form></TD>
+<TD valign="top"><B>1. (50 points)</B> The textarea named <b>ta1</b> shown to the left is in a form named <b>f1</b>. It contains contains the 2015 Top 100 billionaires (from <a href="https://en.wikipedia.org/wiki/The_World%27s_Billionaires_2015">here</a>). For each person, the following data is shown: 
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Rank</b> followed by a comma
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b>  followed by a comma 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Citizenship</b>  followed by a comma
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Age</b>  followed by a comma
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Net Worth USD billion</b>  followed by a comma
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Source(s) of wealth</b>   followed by a semicolon (except for the last one)
+<br>
+Write the javascript function named <b>p1()</b> that:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Retrieves the data from the textarea <b>ta1</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2.Creates a 100 row by 6 column table containing the data.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ Use NO column headings for the table ].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Calculates the <b>average age</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Calculates the <b>average net worth</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;5. Counts <b>the number of billionaires from the US</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;6. Places the table and items 3&rarr;5 above in the DIV block with id="p1_out".
+<br><b>CAUTION:</b> some values of <b>Age</b> are shown as "n/a". Skip these ages in your calculations.<p>
+<center><span id="p1_out" style="inline-block;width:95%;"><b>this is the DIV block with id="p1_out"</b></span></center>  <br>   
+Show NO HTML. Show only the javascript for <B>p1</B>.
+</TD></TR></TABLE>
+
+
+<FORM name="f2" style="margin: 0px; padding: 0px;">
+<TABLE width="98%" style="margin: 4px 0px 0px 0px; border:solid black 2px;padding 0px 0px 0px 0px;" cellspacing="0">
+<TR style="margin:0px;padding:0px;">
+<TD style="border-style:solid;border-color:black;border-width:0px 2px 2px 0px;margin:0px;width:250px;padding:0px;" valign="top">
+<table border="1" cellspacing="0" style="margin:2px;">
+<tr><td class="ccell" colspan="6" bgcolor="#dddddd"><center><b>My Core GPA Calculator</td></tr>
+<tr  style="background-color:#dddddd;font-weight:bold;"><td class="ccell" ></td><td class="ccell" >&nbsp;Hrs&nbsp;</td><td class="ccell" >&nbsp;Course</td><td class="ccell" >&nbsp;Grade&nbsp;</td><td class="ccell" >&nbsp;Course</td><td class="ccell" >&nbsp;Grade&nbsp;</td></tr>
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Communication&nbsp;</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">6</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"  class="bigger" maxlength="8" value="COMM1301"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="A"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8" class="bigger" value="COMM1302"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" style="text-align:center;" value="B"></td>
+</tr>
+
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Mathematics</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">3</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="MATH 1301"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="C"></td>
+<td colspan="2" style="background-color:#dddddd;">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Sciences</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">6</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="BIOL1310"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="A"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="BIOL1320"> </td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="C"></td>
+</tr>
+
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Philosophy</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">3</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"  class="bigger"  maxlength="8" value="PHIL2310"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="D"></td>
+<td colspan="2" style="background-color:#dddddd;">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Arts</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">3</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"  class="bigger"  maxlength="8" value="MUSI2331"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="B"></td>
+<td colspan="2" style="background-color:#dddddd;">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;History</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">6</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="HIST2315"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="C"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="HIST2316"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="A"></td>
+</tr>
+
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Politics</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">6</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="POLS2310"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="D"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="POLS2311"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"  class="smaller" maxlength="1" style="text-align:center;" value="C"></td>
+</tr>
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Psychology</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">3</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="PSYC3310"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4" class="smaller" maxlength="1" style="text-align:center;" value="B"></td>
+<td colspan="2" style="background-color:#dddddd;">&nbsp;</td>
+</tr>
+<tr>
+<td class="ccell"  style="background-color:#dddddd;text-align:left;">&nbsp;Writing</td>
+<td class="ccell"  style="background-color:#dddddd;text-align:center;">3</td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="8"   class="bigger" maxlength="8" value="ENGL1300"></td>
+<td class="ccell"  style="text-align:center;"><input type="text" size="4"   class="smaller" maxlength="1" style="text-align:center;" value="A"></td>
+<td colspan="2" style="background-color:#dddddd;">&nbsp;</td>
+</tr>
+</table>
+<center>
+<span style="font-size:10px;font-weight:bold;">My CORE GPA is 
+  <span id="s1"><span style="background-color:#dddddd;">SPAN with id="s1"</span></span>
+ based on 
+  <span id="s2"><span style="background-color:#dddddd;">SPAN with id="s2"</span></span>
+ hours
+<br>
+<span id="s3"><span  style="background-color:#dddddd;">SPAN with id="s3"</span></span>
+</span>
+<br>
+<INPUT style="margin: 2px;font-size:12px;font-family:Comic Sans MS,Helvetica;" onclick="p2()" type="button" value="Calculate My CORE GPA"></center></td> -->
+<TD valign="top"><B>2. (50 points)</B> The application shown to the left is used to calculate the student's grade point average (GPA). There are thirteen core courses shown. For <u>each course there are two text boxes</u> where the user can enter information about each course. There are thirteen text boxes in the two 'Course' columns for entering the 8 character course number (HTML elements 0,2,4,6,...). There are thirteen text boxes (HTML elements 1,3,5,7,...) for recording the 'Grade' values to the right of each 'Course'. All the textboxes are in a form named <b>f2</b>.
+
+The GPA is calculated by accumulating grade points for each of the thirteen grades:
+<ol>
+<li>A grade of "A" is worth 4 grade points
+<li>A grade of "B" is worth 3 grade points
+<li>A grade of "C" is worth 2 grade points
+<li>A grade of "D" is worth 1 grade points
+<li>A grade of "F" is worth 0 grade points
+</ol>
+The student's gpa is the sum of all the grade points earned divided by the number of courses with grades assigned. Empty 'Grade' textboxes <u>are not used</u> in the gpa calculation. For example, if there are only 11 textboxes that have grades, then the calculated gpa is the sum of the eleven grade point values divided by 11. 
+</td></tr>
+<tr><td colspan="2">
+When the user enters the data, and clicks on the "Calculate My CORE GPA" button, the function named <b>p2()</b> should:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;(a) Calculate the students GPA by:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Assigning 4 grade points for each "A", 3 grade points for each "B", 2 grade points a for each "C" etc.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Dividing the total grade points by the number of grades, yielding the calculated gpa value.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;(b) In the SPAN block with id="s1", place the calculated gpa using the .toFixed(2) method.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;(c) In the SPAN block with id="s2", place the total number of hours taken (NOT NUMBER OF COURSES TAKEN). 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;(d) In the SPAN block with id="s3", place the five grades and the number of times each grade occurred
+<br>The textbox values are referenced using: <b>document.f2.elements[ <i>i</i> ].value</b> where <b><i>i</i></b> is 0 &rarr; 25
+<br>Use this array:&nbsp;&nbsp;&nbsp;<b>var gc = [0,0,0,0,0];</b> for the counts of each grade
+<br>Use this array:&nbsp;&nbsp;&nbsp;<b>var letters = ["A","B","C","D","F"];</b> inside your loops for grade values
+<br>All classes are 3 hours. Show NO HTML. Show only the javascript for <B>p2</B>.
+</td></tr>
+</TABLE></CENTER>
+
+</form>
+ </BODY></HTML>
